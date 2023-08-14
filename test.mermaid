@@ -1,5 +1,6 @@
 erDiagram
     CAR ||--o{ NAMED-DRIVER : allows
+    CAR ||--|| INSURANCE : has
     CAR {
         string registrationNumber PK
         string make
@@ -13,9 +14,16 @@ erDiagram
         string lastName
         string phone UK
         int age
+        int insurancePolicyId FK
     }
     NAMED-DRIVER {
         string carRegistrationNumber PK, FK
         string driverLicence PK, FK
+    }
+    INSURANCE {
+        int insurancePolicyId PK, FK
+        string policyName
+        bool isActive
+        int deductible
     }
     MANUFACTURER only one to zero or more CAR : makes
